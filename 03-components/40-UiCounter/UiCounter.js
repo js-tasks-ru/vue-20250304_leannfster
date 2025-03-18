@@ -9,15 +9,44 @@ export default defineComponent({
     UiButton,
   },
 
-  setup() {
-    // Рекомендуется для практики реализовать обработку событий внутри setup, а не непосредственно в шаблоне
+  props: {
+    min: {
+      type: Number,
+      required: false,
+      default: () => 0,
+    },
+
+    max: {
+      type: Number,
+      required: false,
+      default: () => Infinity,
+    },
+
+    count: Number,
+  },
+
+  emits: ['update:count'],
+
+  setup(props, {emit}) {
+    const onIncrement = () => {
+      emit('update:count', props.count + 1)
+    }
+
+    const onDecrement = () => {
+      emit('update:count', props.count - 1)
+    }
+
+    return {
+      onIncrement,
+      onDecrement,
+    }
   },
 
   template: `
     <div class="counter">
-      <UiButton aria-label="Decrement" disabled>➖</UiButton>
-      <span class="count" data-testid="count">3</span>
-      <UiButton aria-label="Increment">➕</UiButton>
+      <UiButton aria-label="Decrement" :disabled="count <= min" @click="onDecrement">➖</UiButton>
+      <span class="count" data-testid="count">{{ count }}</span>
+      <UiButton aria-label="Increment" :disabled="count >= max" @click="onIncrement">➕</UiButton>
     </div>
   `,
 })
