@@ -1,4 +1,4 @@
-import { defineComponent, onBeforeMount, onUnmounted, computed, ref } from 'vue'
+import { defineComponent, onBeforeMount, onUnmounted, ref } from 'vue'
 
 export default defineComponent({
   name: 'UiClock',
