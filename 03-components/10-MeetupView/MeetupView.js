@@ -19,7 +19,10 @@ export default defineComponent({
   },
 
   props: {
-    meetup: Object
+    meetup: {
+      type: Object,
+      required: true,
+    }
   },
 
   template: `

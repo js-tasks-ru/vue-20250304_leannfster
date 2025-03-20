@@ -22,7 +22,7 @@ export default defineComponent({
   template: `
     <div class="meetup-selector">
       <div class="meetup-selector__control">
-        <button class="button button--secondary" type="button" @click.prevent="currentId--" :disabled="currentId <= 1">Предыдущий</button>
+        <button class="button button--secondary" type="button" @click="currentId--" :disabled="currentId <= 1">Предыдущий</button>
 
         <div class="radio-group" role="radiogroup">
           <div class="radio-group__button">

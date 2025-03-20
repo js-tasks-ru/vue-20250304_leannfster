@@ -33,18 +33,17 @@ export default defineComponent({
   name: 'MarkedEmailsApp',
 
   setup() {
-    const emailsCopy = [...emails]
     const searchString = ref('')
 
     const emailsList = computed(() => {
-      const computedEmails = []
-      for (const email of emailsCopy) {
-        computedEmails.push({
+      
+      const mappedEmails = emails.map((email) => {
+        return {
           value: email,
           isMarked: searchString.value && email.includes(searchString.value)
-        })
-      }
-      return computedEmails
+        }
+      })
+      return mappedEmails
     })
 
     return {

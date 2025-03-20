@@ -5,7 +5,7 @@ export default defineComponent({
 
   setup() {
     // Реактивные переменные для хранения координат метки
-    let coords = ref({
+    const coords = ref({
       x: 0,
       y: 0
     })

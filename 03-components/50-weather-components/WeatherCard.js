@@ -14,7 +14,10 @@ export default defineComponent({
     },
 
     props: {
-        item: Object
+        item: {
+            type: Object,
+            required: true,
+        }
     },
 
     setup (props) {
@@ -45,17 +48,13 @@ export default defineComponent({
         </div>
         </div>
         <div class="weather-conditions">
-        <div class="weather-conditions__icon" :title="$props.item.current.weather.description">{{ weatherIcons[item.current.weather.id] }}</div>
+        <div class="weather-conditions__icon" :title="item.current.weather.description">{{ weatherIcons[item.current.weather.id] }}</div>
         <div class="weather-conditions__temp">{{ tempInCelsius }} °C</div>
         </div>
         <div class="weather-details">
-            <WeatherDetails>
-                <template #label>Давление, мм рт. ст.</template>
-                {{ pressureInMm }}
+            <WeatherDetails label="Давление, мм рт. ст." :data="pressureInMm">
             </WeatherDetails>
-            <WeatherDetails>
-                <template #label>Влажность, %</template>
-                {{ item.current.humidity }}
+            <WeatherDetails label="Влажность, %" :data="item.current.humidity">
             </WeatherDetails>
             <WeatherDetails>
                 <template #label>Облачность, %</template>

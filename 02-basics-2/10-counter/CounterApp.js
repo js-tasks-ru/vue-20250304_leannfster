@@ -20,7 +20,7 @@ export default defineComponent({
         class="button button--secondary"
         type="button"
         aria-label="Decrement"
-        @click=(value--)
+        @click="(value--)"
         :disabled="value <= minValue"
       >➖</button>
 
@@ -30,7 +30,7 @@ export default defineComponent({
         class="button button--secondary"
         type="button"
         aria-label="Increment"
-        @click=(value++)
+        @click="(value++)"
         :disabled="value >= maxValue"
       >➕</button>
     </div>
