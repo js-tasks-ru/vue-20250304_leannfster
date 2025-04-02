@@ -10,7 +10,7 @@ const props = defineProps({
     type: String,
   },
 })
-const bgStyle = computed(() => `url('${props.image}')`)
+const bgStyle = computed(() => (props.image ? `url('${props.image}')` : `var(--default-cover)`))
 </script>
 
 <template>
@@ -25,7 +25,7 @@ const bgStyle = computed(() => `url('${props.image}')`)
   background-position: center;
   /* Если изображение присутствует - берём его из CSS переменной, установленной на элемент в шаблоне */
   /* Иначе выводим изображение по умолчанию - var(--default-cover) */
-  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), v-bind(`${bgStyle}, var(--default-cover)`);
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), v-bind(bgStyle);
   display: flex;
   flex-direction: column;
   align-items: center;
