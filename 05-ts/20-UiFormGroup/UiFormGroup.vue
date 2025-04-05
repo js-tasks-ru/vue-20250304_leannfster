@@ -3,27 +3,26 @@ import { computed } from 'vue'
 import type { Slot } from 'vue'
 
 const props = defineProps<{
-  for: string
-  label: string
-  description: string
-  hint: string
-  showHint: boolean
-  invalid: boolean
+  for?: string
+  label?: string
+  description?: string
+  hint?: string
+  showHint?: boolean
+  invalid?: boolean
 }>()
 
 defineSlots<{
-  default: Slot
+  default?: Slot
   label?: Slot
-  description: Slot
+  description?: Slot
 }>()
-const customFor = computed(() => (props.for))
 const isHintVisible = computed(() => (props.showHint || props.invalid))
 </script>
 
 <template>
   <div class="form-group">
     <div class="form-group__label-wrapper">
-      <label :for="customFor" class="form-group__label">
+      <label :for="props.for" class="form-group__label">
         <slot name="label">{{ label }}</slot>
       </label>
       <div class="form-group__description">
